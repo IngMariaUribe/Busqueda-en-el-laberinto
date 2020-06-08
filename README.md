@@ -8,5 +8,4 @@
 
 # Descripción
 
-A continuación se desarrolla un algoritmo que busca en una matriz dada(el laberinto) el camino desde un punto X a un punto Y, implementando programación funcional en Python, 
-Se visualiza por consola: la matriz leida desde un archivo.txt, la posición de partida y el camino recorrido hasta la solución.
+A continuación se presenta una posible solución al laberinto pero presenta bugs
