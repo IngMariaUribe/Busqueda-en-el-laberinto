@@ -9,7 +9,7 @@ Maria Fernanda Uribe  20172020110
 #pos[filas],[columnas]
 def laberinto():
 #Lectura de archivos 
-  return [line.split() for line in open("laberinto.txt" , "r").readlines()]
+  return [line.split() for line in open("laberinto3.txt" , "r").readlines()]
 
 def mostrar_laberinto(laberinto):
   print("Laberinto a explorar\n")
@@ -26,16 +26,17 @@ def buscar_x(laberinto):
 #laberinto[][]
 #modo 1 (avazaar), modo 2 (regresar)
 def buscar(laberinto, recorrido,pos,posInicial,modo):
+    print(pos)
     if laberinto[pos[0]][pos[1]+1]=="Y" or laberinto[pos[0]][pos[1]-1]=="Y" or laberinto[pos[0]+1][pos[1]]=="Y" or laberinto[pos[0]-1][pos[1]]=="Y":
             recorrido= recorrido+[pos]
             if(laberinto[pos[0]][pos[1]+1]=="Y"):
                 recorrido+=[pos[0],pos[1]+1]
             elif(laberinto[pos[0]][pos[1]-1]=="Y"):
-                recorrido+=[pos[0]][pos[1]-1]    
+                recorrido+=[pos[0],pos[1]-1]    
             elif(laberinto[pos[0]+1][pos[1]]=="Y"):
-                recorrido+=[pos[0]+1][pos[1]]  
+                recorrido+=[pos[0]+1,pos[1]]  
             elif(laberinto[pos[0]-1][pos[1]]=="Y"):
-                recorrido+=[pos[0]-1][pos[1]]    
+                recorrido+=[pos[0]-1,pos[1]]    
             print("El recorrido de X a Y fué:")
             return recorrido
         
@@ -55,6 +56,7 @@ def buscar(laberinto, recorrido,pos,posInicial,modo):
                 return buscar(laberinto,recorrido,pos,posInicial,2)
             #Ouede moverse
             elif len(buscador_camino(pos, laberinto,[], 4))==2:
+                print(buscador_camino(pos, laberinto,[], 4))
                 if(isIn(recorrido,buscador_camino(pos, laberinto,[], 4)[0])):
                       if (buscador_camino(pos, laberinto,[], 4)[1][0]==pos[0]+1):
                            return buscar(laberinto,recorrido+[pos],avnzar(pos, laberinto, -2) ,posInicial,1)
@@ -63,7 +65,7 @@ def buscar(laberinto, recorrido,pos,posInicial,modo):
                            return buscar(laberinto,recorrido+[pos],avnzar(pos, laberinto, +2) ,posInicial,1)
                           
                       if (buscador_camino(pos, laberinto,[], 4)[1][1]==pos[1]+1):
-                           return buscar(laberinto,recorrido[pos],avnzar(pos, laberinto, 1) ,posInicial,1)
+                           return buscar(laberinto,recorrido+[pos],avnzar(pos, laberinto, 1) ,posInicial,1)
                            
                       if (buscador_camino(pos, laberinto,[], 4)[1][1]==pos[1]-1):
                            return buscar(laberinto,recorrido+[pos],avnzar(pos, laberinto, -1) ,posInicial,1)
